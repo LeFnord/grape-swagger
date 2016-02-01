@@ -39,7 +39,6 @@ describe 'format, content_type' do
   end
 
   specify do
-    require 'pry'; binding.pry
     expect(subject['paths']['/use_produces']['get']).to include('produces')
     expect(subject['paths']['/use_produces']['get']['produces']).to eql([
       'application/xml',
@@ -54,7 +53,6 @@ describe 'format, content_type' do
   end
 
   specify do
-    require 'pry'; binding.pry
     expect(subject['paths']['/use_produces']['get']).to include('produces')
     expect(subject['paths']['/use_produces']['get']['produces']).to eql([
       'application/xml',
