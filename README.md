@@ -1,15 +1,7 @@
-[ ![Codeship Status for LeFnord/grape-swagger](https://codeship.com/projects/3e240870-44df-0133-d90f-6a11ad0da27a/status?branch=master)](https://codeship.com/projects/104499)
+This branch is work in progress for bringing grape-swagger to Swagger 2.0 spec. Re-added/reimplemented features could be found in the ToC.
 
-# grape-swagger
+##### Table of Contents
 
-**this is a work in progress version, to upgrade to swagger 2.0 spec,  
-readded/reimplemented features could be found in the ToC**
-
-
-… first imports a of simple API into AWS API gateway and MS Azure via `swagger.json` were successful
-
-
-##### Table of Contents  
 [What is grape-swagger?](#what)  
 [Related Projects](#related)  
 [Swagger-Spec](#swagger-spec)  
@@ -20,14 +12,12 @@ readded/reimplemented features could be found in the ToC**
 [Additional documentation](#additions)  
 [Example](#example)  
 
+For how to use at the moment see [v2 specs](tree/master/spec/swagger_v2) and or [Hussars](https://github.com/LeFnord/hussars) sample app.
 
-For how to use at the moment see [v2 specs](https://github.com/LeFnord/grape-swagger/tree/master/spec/swagger_v2) and or [Hussars](https://github.com/LeFnord/hussars) sample app.
-
-<!-- [![Gem Version](https://badge.fury.io/rb/grape-swagger.svg)](http://badge.fury.io/rb/grape-swagger)
-[![Build Status](https://travis-ci.org/ruby-grape/grape-swagger.svg?branch=master)](https://travis-ci.org/ruby-grape/grape-swagger)
+[![Gem Version](https://badge.fury.io/rb/grape-swagger.svg)](http://badge.fury.io/rb/grape-swagger)
+[![Build Status](https://travis-ci.org/ruby-grape/grape-swagger.svg?branch=swagger-2.0)](https://travis-ci.org/ruby-grape/grape-swagger)
 [![Dependency Status](https://gemnasium.com/ruby-grape/grape-swagger.svg)](https://gemnasium.com/ruby-grape/grape-swagger)
-[![Code Climate](https://codeclimate.com/github/ruby-grape/grape-swagger.svg)](https://codeclimate.com/github/ruby-grape/grape-swagger) -->
-
+[![Code Climate](https://codeclimate.com/github/ruby-grape/grape-swagger.svg)](https://codeclimate.com/github/ruby-grape/grape-swagger)
 
 <a name="what" />
 ## What is grape-swagger?
@@ -161,7 +151,7 @@ add_swagger_documentation \
 <a name="hide_format" />
 #### hide_format:
 
-~~Don't add `.(format)` to the end of URLs, default is `false`.~~  
+~~Don't add `.(format)` to the end of URLs, default is `false`.~~
 `.(format)` would always be removed.
 
 
@@ -566,7 +556,7 @@ To use it, add a new instance of the adapter to the markdown options of `add_swa
 add_swagger_documentation \
   markdown: GrapeSwagger::Markdown::KramdownAdapter.new(options)
 ```
-and write your route details in GFM, examples could be find in [details spec](https://github.com/LeFnord/grape-swagger/blob/master/spec/swagger_v2/api_swagger_v2_detail_spec.rb)
+and write your route details in GFM, examples could be find in [details spec](blob/master/spec/swagger_v2/api_swagger_v2_detail_spec.rb)
 
 
 #### Kramdown
