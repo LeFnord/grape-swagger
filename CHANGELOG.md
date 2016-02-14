@@ -1,6 +1,9 @@
-
-n.n.n / 2016-02-05
+n.n.n / 2016-02-14
 ==================
+
+  * adds extensions support
+  * modularize data type
+
 
 ### 0.10.3 (Next)
 
