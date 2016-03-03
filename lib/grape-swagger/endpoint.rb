@@ -195,7 +195,7 @@ module Grape
       required, exposed = route.route_params.partition { |x| x.first.is_a? String }
 
       unless declared_params.nil?
-        required_params = parse_request_params(declared_params, required, route.route_params)
+        required_params = parse_request_params(required)
       end
 
       if !exposed.empty? && !@entity
@@ -209,9 +209,8 @@ module Grape
       required_params || {}
     end
 
-    def parse_request_params(parameters, required, route_paramter)
-      require 'pry'; binding.pry
-      @array_key = nil
+    def parse_request_params(required)
+      # @array_key = nil
       required.each_with_object({}) do |param, memo|
         @array_key = param.first.to_s if param.last[:type] == 'Array'
         if @array_key && param.first.to_s.start_with?(@array_key)
@@ -220,7 +219,7 @@ module Grape
         else
           key = param.first
         end
-        memo[key] = param.last unless param.last[:type] == 'Hash' || param.last[:type] == 'Array'
+        memo[key] = param.last unless param.last[:type] == 'Hash' || param.last[:type] == 'Array' && !param.last.key?(:documentation)
       end
     end
 
