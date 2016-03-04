@@ -210,11 +210,10 @@ module Grape
     end
 
     def parse_request_params(required)
-      # @array_key = nil
       required.each_with_object({}) do |param, memo|
         @array_key = param.first.to_s if param.last[:type] == 'Array'
         if @array_key && param.first.to_s.start_with?(@array_key)
-          key = param.first.to_s.sub(@array_key, "#{@array_key}[]")
+          key = param.first.to_s.gsub('[', '[][')
           param.last[:is_array] = true
         else
           key = param.first
