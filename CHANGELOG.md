@@ -1,9 +1,11 @@
 n.n.n / 2016-02-14
 ==================
 
-  * adds extensions support
-  * modularize data type
+### 0.10.4 (Next)
 
+[#344](https://github.com/ruby-grape/grape-swagger/pull/) Namespace based tag include in Swagger Json
+
+* Namespace based tagging help the swagger GUI to group the API list
 
 ### 0.10.3 (Next)
 
