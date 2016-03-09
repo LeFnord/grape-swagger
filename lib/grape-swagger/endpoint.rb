@@ -26,6 +26,7 @@ module Grape
         authorizations: options[:authorizations],
         host:           request.env['HTTP_HOST'] || options[:host],
         basePath:       request.env['SCRIPT_NAME'] || options[:base_path],
+        tags:           tag_name_description(options),
         schemes:        options[:scheme]
       }.delete_if { |_, value| value.blank? }
     end
@@ -125,7 +126,7 @@ module Grape
 
       method[:parameters] = params_object(route)
       method[:responses] = response_object(route)
-
+      method[:tags] = tag_object(route, options[:version])
       method.delete_if { |_, value| value.blank? }
     end
 
@@ -365,6 +366,29 @@ module Grape
 
     def primitive?(type)
       %w(object integer long float double string byte boolean date dateTime).include? type
+    end
+
+    def tag_name_description(options)
+      target_class = options[:target_class]
+      namespaces = target_class.combined_namespaces
+      namespace_routes = target_class.combined_namespace_routes
+
+      namespace_routes.keys.map do |local_route|
+        next if namespace_routes[local_route].map(&:route_hidden).all? { |value| value.respond_to?(:call) ? value.call : value }
+
+        original_namespace_name = target_class.combined_namespace_identifiers.key?(local_route) ? target_class.combined_namespace_identifiers[local_route] : local_route
+        description = namespaces[original_namespace_name] && namespaces[original_namespace_name].options[:desc]
+        description ||= "Operations about #{original_namespace_name.pluralize}"
+
+        {
+          name: local_route,
+          description: description
+        }
+      end.compact
+    end
+
+    def tag_object(route, version)
+      Array(route.route_path.split('{')[0].split('/').reject(&:empty?).delete_if { |i| ((i == route.route_prefix.to_s) || (i == version)) }.first)
     end
   end
 end
