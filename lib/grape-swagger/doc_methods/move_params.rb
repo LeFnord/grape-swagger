@@ -66,11 +66,11 @@ module GrapeSwagger
         end
 
         def document_as_array(param)
-          {}.tap { |property|
+          {}.tap do |property|
             property[:type] = 'array'
             property[:description] = param.delete(:description) unless param[:description].nil?
-            property[:items] = document_as_property(param)
-          }
+            property[:items] = document_as_property(param)[:items]
+          end
         end
 
         def document_as_property(param)
