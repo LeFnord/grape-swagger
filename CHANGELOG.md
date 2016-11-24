@@ -3,6 +3,7 @@
 #### Features
 
 * [#554](https://github.com/ruby-grape/grape-swagger/pull/554): Updates travis.yml to align with grape  - [@LeFnord](https://github.com/LeFnord).
+* [#535](https://github.com/ruby-grape/grape-swagger/pull/535): Add support for grape version cascading - [@qinix](https://github.com/qinix).
 
 * Your contribution here.
 
