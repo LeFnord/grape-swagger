@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 require 'grape-swagger/version'
 
@@ -11,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Add auto generated documentation to your Grape API that can be displayed with Swagger.'
   s.license     = 'MIT'
 
-  s.add_runtime_dependency 'grape', '>= 0.12.0'
+  s.add_runtime_dependency 'grape', '~> 0.16'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec}/*`.split("\n")

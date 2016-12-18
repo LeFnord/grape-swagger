@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # backwards compatibility for Grape < 0.16.0
 module Grape
   class Route
