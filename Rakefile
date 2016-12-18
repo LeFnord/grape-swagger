@@ -1,4 +1,5 @@
 # encoding: utf-8
+# frozen_string_literal: true
 
 require 'rubygems'
 require 'bundler'
@@ -14,6 +15,7 @@ require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:spec)
 
+# task default: [:spec]
 require 'rubocop/rake_task'
 RuboCop::RakeTask.new(:rubocop)
 

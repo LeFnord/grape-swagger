@@ -240,7 +240,7 @@ module Grape
                          parse_request_params(required)
                        end || {}
 
-      request_params = route.params.merge(request_params) if route.params.present? && !route.settings[:declared_params].present?
+      return route.params.merge(request_params) if route.params.present? && !route.settings[:declared_params].present?
 
       request_params
     end
