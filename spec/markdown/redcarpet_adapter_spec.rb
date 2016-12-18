@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'spec_helper'
 
 describe GrapeSwagger::Markdown::RedcarpetAdapter, unless: RUBY_PLATFORM.eql?('java') || RUBY_ENGINE.eql?('rbx') do
