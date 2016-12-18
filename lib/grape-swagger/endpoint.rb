@@ -153,9 +153,7 @@ module Grape
 
     def consumes_object(route, format)
       method = route.request_method.downcase.to_sym
-      if route.settings[:description] && route.settings[:description][:consumes]
-        format = route.settings[:description][:consumes]
-      end
+      format = route.settings[:description][:consumes] if route.settings.dig(:description, :consumes)
       mime_types = GrapeSwagger::DocMethods::ProducesConsumes.call(format) if [:post, :put].include?(method)
 
       mime_types
@@ -230,9 +228,11 @@ module Grape
     def tag_object(route)
       version = GrapeSwagger::DocMethods::Version.get(route)
       version = [version] unless version.is_a?(Array)
-      [route.path.split('{')[0]
-            .split('/').reject(&:empty?)
-            .delete_if { |i| i == route.prefix.to_s || version.map(&:to_s).include?(i) }.first]
+      Array(
+        route.path.split('{')[0].split('/').reject(&:empty?).delete_if do |i|
+          i == route.prefix.to_s || version.map(&:to_s).include?(i)
+        end.first
+      )
     end
 
     private
