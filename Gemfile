@@ -23,7 +23,7 @@ group :development, :test do
   gem 'rack-test'
   gem 'rake'
   gem 'rdoc'
-  gem 'redcarpet', platforms: [:mri]
+  gem 'redcarpet', '< 3.4', platforms: [:mri]
   gem 'rouge', platforms: [:mri]
   gem 'rspec', '~> 3.0'
   gem 'rubocop', '~> 0.40'
